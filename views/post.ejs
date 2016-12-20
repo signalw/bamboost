@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+    </style>
+  </head>
+  <body>
+    <% include partials/nav.ejs %>
+    <h1> Post id: <%= id %></h1>
+    <p><strong>Title: </strong><%= data.title %></p>
+    <p><strong>Body: </strong><%= data.body %></p>
+    <h2>Hobbies:</h2>
+    <ul>
+      <% data.hobbies.forEach(function(item){ %>
+        <li><%= item %></li>
+      <% }); %>
+    </ul>
+  </body>
+</html>
