@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <style>
-    </style>
-  </head>
+  <% include partials/head.ejs %>
   <body>
-    <% include partials/nav.ejs %>
     <h1>Hello World</h1>
-    <p>you won't find anything for now </p>
+    <form class="blog-form">
+      <input type="text" id="title" autocomplete="off" required />
+      <input type="text" id="author" autocomplete="off" required />
+      <input type="text" id="body" autocomplete="off" required />
+      <button type="submit">Post blog</button>
+    </form>
+    <ul>
+      <% for (i=0; i < blogs.length; i++) { %>
+        <li>
+          Title: <a href="/post/<%= +blogs[i].date %>"><%= blogs[i].title %></a></br>
+          Author: <%= blogs[i].author %></br>
+          Body: <%= blogs[i].body %></br>
+          Date: <%= blogs[i].date %></br>
+        </li>
+      <% } %>
+    </ul>
   </body>
 </html>

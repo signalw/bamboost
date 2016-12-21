@@ -1,12 +1,51 @@
+var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+
+mongoose.connect(process.env.MONGODB_URI);
+
+var blogSchema = new mongoose.Schema({
+  title: String,
+  author: String,
+  body: String,
+  comments: [{ nickname: String, body: String, date: { type: Date, default: Date.now }}],
+  date: { type: Date, default: Date.now },
+  hidden: Boolean,
+  tags: [String]
+});
+
+var Blog = mongoose.model('blog', blogSchema);
+
+var urlencodedParser = bodyParser.urlencoded({extended: false});
+
 module.exports = function(app){
 
 app.get('/', function(req, res){
-  res.render('index');
+  Blog.find({}, function(err, data){
+    if (err) throw err;
+    res.render('index', {blogs: data});
+  });
 });
 
-app.get('/post/:id', function(req, res){
-  var data = {title: 'title', body: 'hey there', hobbies: ['eating','fighting','fishing']};
-  res.render('post', {id: req.params.id, data: data});
+app.post('/', urlencodedParser, function(req, res){
+  var newBlog = Blog(req.body).save(function(err, data){
+    if (err) throw err;
+    res.json(data);
+  });
+});
+
+app.get('/post/:pid', function(req, res){
+  Blog.findOne({date: {$eq: new Date(+req.params.pid)}}, function(err, data){
+    if (err) throw err;
+    res.render('post', {blog: data});
+  });
+});
+
+app.post('/post/:pid', urlencodedParser, function(req, res){
+  Blog.findOneAndUpdate({date: {$eq: new Date(Number(req.params.pid))}},
+    {$push: {"comments": req.body}}, function(err, data){
+    if (err) throw err;
+    res.json(data);
+  });
 });
 
 };

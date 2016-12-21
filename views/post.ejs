@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <style>
-    </style>
-  </head>
+  <% include partials/head.ejs %>
   <body>
-    <% include partials/nav.ejs %>
-    <h1> Post id: <%= id %></h1>
-    <p><strong>Title: </strong><%= data.title %></p>
-    <p><strong>Body: </strong><%= data.body %></p>
-    <h2>Hobbies:</h2>
-    <ul>
-      <% data.hobbies.forEach(function(item){ %>
-        <li><%= item %></li>
-      <% }); %>
-    </ul>
+    <h1>Reading Post</h1>
+    <p>Title: <%= blog.title %></p>
+    <p>Author: <%= blog.author %></p>
+    <p>Body: <%= blog.body %></p>
+    <p>Created at: <%= blog.date %></p>
+    <h1>Post comments here</h1>
+    <div>
+      <form class="comment-form">
+        Nickname:
+        <input type="text" id="commenter" autocomplete="off" required />
+        Comment:
+        <input type="text" id="comment" autocomplete="off" required />
+        <input id="pid" value=<%= +blog.date %> hidden>
+        <button type="submit">Add Comment</button>
+      </form>
+      <ul>
+        <% for (i=0; i < blog.comments.length; i++) { %>
+          <li><%= blog.comments[i].body %> by <%= blog.comments[i].nickname %> at <%= blog.comments[i].date %></li>
+        <% } %>
+      </ul>
+    </div>
   </body>
 </html>
