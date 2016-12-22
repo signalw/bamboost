@@ -6,7 +6,7 @@ var Blog = require('../models/blog')
 module.exports = function(app){
 
 app.get('/', function(req, res){
-  Blog.find({}, function(err, data){
+  Blog.find({hidden: false}, null, {sort: '-date'}, function(err, data){
     if (err) throw err;
     res.render('index', {blogs: data});
   });
