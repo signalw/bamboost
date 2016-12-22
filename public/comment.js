@@ -3,8 +3,8 @@ $(document).ready(function(){
   $('form.comment-form').on('submit', function(){
     var pid = $('#pid');
     var nickname = $('#commenter');
-    var body = $('#comment');
-    var comment = {nickname: nickname.val(), body: body.val()};
+    var body = quill.container.firstChild.innerHTML;
+    var comment = {nickname: nickname.val(), body: body};
     $.ajax({
       type: 'POST',
       url: '/post/'+pid.val(),
@@ -14,6 +14,14 @@ $(document).ready(function(){
       }
     });
     return false;
+  });
+
+  var quill = new Quill('#comment', {
+    modules: {
+      toolbar: ['bold', 'italic', 'underline', 'code', 'code-block', 'clean']
+    },
+    placeholder: 'Add your comment...',
+    theme: 'snow'
   });
 
 });

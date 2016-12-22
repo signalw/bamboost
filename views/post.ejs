@@ -13,13 +13,17 @@
         Nickname:
         <input type="text" id="commenter" autocomplete="off" required />
         Comment:
-        <input type="text" id="comment" autocomplete="off" required />
-        <input id="pid" value=<%= +blog.date %> hidden>
+        <div id="comment"></div>
+        <input id="pid" value=<%= +blog.date %> hidden />
         <button type="submit">Add Comment</button>
       </form>
+    </div>
+    <div id="log"></div>
+    <div>
       <ul>
         <% for (i=0; i < blog.comments.length; i++) { %>
-          <li><%= blog.comments[i].body %> by <%= blog.comments[i].nickname %> at <%= blog.comments[i].date %></li>
+          <li><%- blog.comments[i].body %></li>
+          <li>by <%= blog.comments[i].nickname %> at <%= blog.comments[i].date %></li>
         <% } %>
       </ul>
     </div>
