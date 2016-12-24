@@ -38,4 +38,11 @@ $(document).ready(function(){
     }
   });
 
+  $('#paginator').bootpag({
+    total: $('#lastPage').val(),
+    page: $('#pageNum').val(),
+    maxVisible: 5,
+    href: "p.{{number}}",
+  });
+
 });

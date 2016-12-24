@@ -16,16 +16,21 @@
             <button type="submit">Post blog</button>
           </form>
           <hr>
-          <% for (var i=0; i < blogs.length; i++) { %>
-          <div class="post-preview">
-            <p class="post-title">
-              <a href="/post/<%= +blogs[i].date %>"><%= blogs[i].title %></a>
-            </p>
-            <p class="post-meta"><%= blogs[i].date %></p>
-            <%= blogs[i].body_preview %></br>
-            <hr>
+          <div class="post-wrapper">
+            <% for (var i=0; i < blogs.length; i++) { %>
+            <div class="post-preview">
+              <p class="post-title">
+                <a href="/post/<%= +blogs[i].date %>"><%= blogs[i].title %></a>
+              </p>
+              <p class="post-meta"><%= blogs[i].date %></p>
+              <%= blogs[i].body_preview %></br>
+              <hr>
+            </div>
+            <% } %>
           </div>
-          <% } %>
+          <input id="pageNum" value="<%= page %>" hidden />
+          <input id="lastPage" value="<%= lastPage %>" hidden />
+          <div id="paginator"></div>
         </div>
       </div>
     </div>
