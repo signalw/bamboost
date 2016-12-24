@@ -42,3 +42,39 @@ input {
   border-color: #CCC;
   border-width: thin;
 }
+
+#paginator{
+  text-align: center;
+}
+
+.pagination {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+.pagination li {
+  display: inline;
+  padding: 0;
+  margin: 0;
+}
+
+.pagination li a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+}
+
+.pagination > li.active > a {
+  background-color: #AAA;
+  color: white;
+}
+.pagination > li > a {
+  border-style: hidden;
+}
+
+.pagination li a:hover:not(.active) {
+  background-color: #ddd;
+}

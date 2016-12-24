@@ -22,13 +22,13 @@
           <div>
             <ul>
               <% for (i=0; i < blog.comments.length; i++) { %>
-                <div>
-                  <%- blog.comments[i].body %>
-                  <p class="post-meta">
-                    <%= blog.comments[i].nickname %> at <%= blog.comments[i].date %>
-                  </p>
-                  <hr>
-                </div>
+              <div>
+                <%- blog.comments[i].body %>
+                <p class="post-meta">
+                  <%= blog.comments[i].nickname %> at <%= blog.comments[i].date %>
+                </p>
+                <hr>
+              </div>
               <% } %>
             </ul>
             <ul>
