@@ -1,8 +1,17 @@
-/*body{
-  background: #0d1121;
-  font-family: tahoma;
-  color: #989898;
-}*/
+.header{
+  margin: 10% 25% 0;
+  text-align: center;
+}
+
+.sidebar-nav-fixed{
+  margin: 0 0 0 0;
+  position:relative;
+  min-height:1px;
+  padding-right:15px;
+  padding-left:15px;
+  float:left;
+  width:100%;
+}
 
 .post-title{
   font-size: 30px;
@@ -11,15 +20,6 @@
 
 .post-meta{
   font-size: 12px;
-}
-
-.sidebar-wrapper{
-  position: fixed;
-}
-
-.header{
-  margin: 120% 2em 0;
-  text-align: center;
 }
 
 a {
@@ -48,9 +48,9 @@ input {
 }
 
 .pagination {
-    display: inline-block;
-    padding: 0;
-    margin: 0;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
 }
 
 .pagination li {
@@ -60,11 +60,11 @@ input {
 }
 
 .pagination li a {
-    color: black;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
-    transition: background-color .3s;
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
 }
 
 .pagination > li.active > a {
@@ -73,8 +73,4 @@ input {
 }
 .pagination > li > a {
   border-style: hidden;
-}
-
-.pagination li a:hover:not(.active) {
-  background-color: #ddd;
 }
