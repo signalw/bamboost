@@ -3,13 +3,13 @@ var urlencodedParser = bodyParser.urlencoded({extended: false});
 
 var Blog = require('../models/blog')
 
-const PAGESIZE = 3;
+const PAGESIZE = 10;
 
 module.exports = function(app){
 
 app.get('/', function(req, res){
-  Blog.count({}, function(err, count){
-    var lastPage = (count-1)/PAGESIZE+1;
+  Blog.count({hidden: false}, function(err, count){
+    var lastPage = Math.floor((count-1)/PAGESIZE+1);
     Blog.find({hidden: false}, null, {limit: PAGESIZE, sort: '-date'},
       function(err, data){
       if (err) throw err;
@@ -21,8 +21,8 @@ app.get('/', function(req, res){
 app.get('/:page_num', function(req, res){
   var page = parseInt(req.params.page_num.split('.')[1]);
   page = page > 0 ? page : 1;
-  Blog.count({}, function(err, count){
-    var lastPage = (count-1)/PAGESIZE+1;
+  Blog.count({hidden: false}, function(err, count){
+    var lastPage = Math.floor((count-1)/PAGESIZE+1);
     page = page < lastPage ? page : lastPage
     var skip = (page-1) * PAGESIZE;
     Blog.find({hidden: false}, null, {skip: skip, limit: PAGESIZE,

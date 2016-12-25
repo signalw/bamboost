@@ -25,7 +25,7 @@ $(document).ready(function(){
     modules: {
       toolbar: ['bold', 'italic', 'underline', 'code', 'code-block', 'clean']
     },
-    placeholder: 'Add your comment, no less than 11 chars...',
+    placeholder: 'Add articles...',
     theme: 'snow'
   });
 
@@ -43,6 +43,7 @@ $(document).ready(function(){
     page: $('#pageNum').val(),
     maxVisible: 5,
     href: "p.{{number}}",
+    leap: false
   });
 
 });
