@@ -2,6 +2,9 @@
   "name": "bamboost",
   "version": "1.0.1",
   "description": "personal blog",
+  "engines": {
+    "node": "6.11.1"
+  },
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
