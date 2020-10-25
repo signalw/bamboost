@@ -71,6 +71,7 @@ input {
   background-color: #AAA;
   color: white;
 }
+
 .pagination > li > a {
   border-style: hidden;
 }
